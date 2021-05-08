@@ -1,0 +1,33 @@
+<div class="container">
+    <input type="country" class="myinput" id="search-text" aria-describedby="search-text" 
+    [(ngModel)]="searchText" placeholder="Busca un país"
+    autofocus (ngModelChange)='onChange()' (keyup)="onKeypressEvent($event)">
+    <i class="fas fa-search search"></i>
+    <i *ngIf="loading" class="loader"></i>
+</div>
+<div *ngIf="searching">
+    <ul class="myul">
+        <li *ngFor="let country of dataSource | appFilter: searchText" (click)="onClick(country)">
+            <a href="#">{{country}}</a>
+        </li>
+    </ul>
+</div>
+
+<div *ngIf="!searching">
+    <table class="zigzag">
+        <tbody>
+        <tr>
+            <td><b>País: </b></td>
+            <td>{{countryName}}</td>
+        </tr>
+        <tr>
+            <td><b>Capital: </b></td>
+            <td>{{countryCapital}}</td>
+        </tr>
+        <tr>
+            <td><b>Región: </b></td>
+            <td>{{countryRegion}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
