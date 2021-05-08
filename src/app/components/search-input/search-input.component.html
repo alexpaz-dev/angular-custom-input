@@ -5,8 +5,8 @@
     <i class="fas fa-search search"></i>
     <i *ngIf="loading" class="loader"></i>
 </div>
-<div *ngIf="searching">
-    <ul class="myul">
+<div id="country-selector" *ngIf="searching">
+    <ul class="myul" id="country-list">
         <li *ngFor="let country of dataSource | appFilter: searchText" (click)="onClick(country)">
             <a href="#">{{country}}</a>
         </li>
@@ -20,7 +20,7 @@
             <td><b>País: </b></td>
             <td>{{countryName}}</td>
         </tr>
-        <tr>
+        <tr class="capital">
             <td><b>Capital: </b></td>
             <td>{{countryCapital}}</td>
         </tr>
